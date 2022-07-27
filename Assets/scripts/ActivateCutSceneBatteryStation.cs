@@ -28,16 +28,11 @@ public class ActivateCutSceneBatteryStation : MonoBehaviour
                 {
                     if (collision.gameObject.tag == "Player")
                     {
-                        //playerController.alive = false;
                         director.Play();
                         gameObject.GetComponent<CapsuleCollider2D>().isTrigger = true;
                         cutScenePlayed = true;
                     }
                 }
-            }
-            else if((hitPos.normal.x > 0) && cutScenePlayed)
-            {
-                gameObject.GetComponent<CapsuleCollider2D>().isTrigger = true;
             }
             else
             {
@@ -51,16 +46,4 @@ public class ActivateCutSceneBatteryStation : MonoBehaviour
     {
         gameObject.GetComponent<CapsuleCollider2D>().isTrigger = false;
     }
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if(cutScenePlayed == false)
-    //    {
-    //       gameObject.GetComponent<CapsuleCollider2D>().isTrigger = false;
-    //    }
-    //}
-
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    playerController.alive = true;
-    //}
 }
