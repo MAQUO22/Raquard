@@ -17,7 +17,7 @@ public class ActivateBatteryStation : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            if(active == false)
+            if(active == false && (GameObject.Find("BatteryStationTrigger").GetComponent<ActivateCutSceneBatteryStation>().cutScenePlayed == true))
             {
                 if ((GameObject.Find("Robot").GetComponent<PlayerController>().batteries) >= 5)
                 {
@@ -28,7 +28,7 @@ public class ActivateBatteryStation : MonoBehaviour
                     batteryCollect.RefreshText();
                 }
             }
-            else
+            else if(active == true)
             {
                 Debug.Log("Station already activated");
             }

@@ -4444,7 +4444,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2104106833}
   - component: {fileID: 2104106834}
-  - component: {fileID: 2104106837}
   - component: {fileID: 2104106836}
   - component: {fileID: 2104106838}
   m_Layer: 0
@@ -4482,6 +4481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   director: {fileID: 2104106836}
+  cutScenePlayed: 0
 --- !u!320 &2104106836
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -4505,21 +4505,6 @@ PlayableDirector:
     value: {fileID: 417753038}
   m_ExposedReferences:
     m_References: []
---- !u!114 &2104106837
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2104106832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d16d5e717aca76745a2d35a37ea11f60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerAnimator: {fileID: 675193835}
-  playerController: {fileID: 9100000, guid: c0aacb8c37e784346abf446d374bdc34, type: 2}
-  director: {fileID: 2104106836}
 --- !u!70 &2104106838
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

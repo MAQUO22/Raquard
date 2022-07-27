@@ -9,7 +9,7 @@ public class TimeLineManagerFix : MonoBehaviour
     public Animator playerAnimator;
     public RuntimeAnimatorController playerController;
     public PlayableDirector director;
-    void Start()
+    void OnEnable()
     {
         playerController = playerAnimator.runtimeAnimatorController;
         playerAnimator.runtimeAnimatorController = null;

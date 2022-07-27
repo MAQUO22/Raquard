@@ -8,6 +8,7 @@ public class ActivateCutSceneBatteryStation : MonoBehaviour
     public PlayableDirector director;
     private PlayerController playerController;
     private ActivateBatteryStation batteryStation;
+    public bool cutScenePlayed = false;
 
     private void Start()
     {
@@ -16,20 +17,50 @@ public class ActivateCutSceneBatteryStation : MonoBehaviour
         batteryStation = GameObject.Find("BatteryStation").GetComponent<ActivateBatteryStation>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if((batteryStation.active == false) && (playerController.batteries >= 5))
+        foreach(ContactPoint2D hitPos in collision.contacts)
         {
-            if (collision.gameObject.tag == "Player")
+
+            if (hitPos.normal.x > 0 && cutScenePlayed == false)
             {
-                playerController.alive = false;
-                director.Play();
+                if ((batteryStation.active == false) && (playerController.batteries >= 5))
+                {
+                    if (collision.gameObject.tag == "Player")
+                    {
+                        //playerController.alive = false;
+                        director.Play();
+                        gameObject.GetComponent<CapsuleCollider2D>().isTrigger = true;
+                        cutScenePlayed = true;
+                    }
+                }
             }
+            else if((hitPos.normal.x > 0) && cutScenePlayed)
+            {
+                gameObject.GetComponent<CapsuleCollider2D>().isTrigger = true;
+            }
+            else
+            {
+                gameObject.GetComponent<CapsuleCollider2D>().isTrigger = true;
+            }
+
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        playerController.alive = true;
+        gameObject.GetComponent<CapsuleCollider2D>().isTrigger = false;
     }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if(cutScenePlayed == false)
+    //    {
+    //       gameObject.GetComponent<CapsuleCollider2D>().isTrigger = false;
+    //    }
+    //}
+
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    playerController.alive = true;
+    //}
 }
